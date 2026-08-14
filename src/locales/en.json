@@ -27,5 +27,40 @@
     "routine": "Routine",
     "finances": "Finances",
     "profile": "Profile"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "signupTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "loginButton": "Log in",
+    "signupButton": "Create account",
+    "goToSignup": "No account? Create one",
+    "goToLogin": "Already have an account? Log in",
+    "invalidEmail": "Enter a valid email",
+    "passwordRequired": "Enter your password",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordMismatch": "Passwords do not match",
+    "nameRequired": "Enter your name",
+    "loginFailed": "Could not log in. Check your email and password",
+    "signupFailed": "Could not create your account. Please try again"
+  },
+  "profile": {
+    "changePhoto": "Change photo",
+    "permissionDenied": "We need access to your photos to change the avatar",
+    "uploadFailed": "Could not upload the photo",
+    "saved": "Saved successfully",
+    "saveFailed": "Could not save",
+    "logout": "Log out"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeAuto": "Automatic",
+    "currency": "Currency"
   }
 }

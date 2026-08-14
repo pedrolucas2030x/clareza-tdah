@@ -27,5 +27,40 @@
     "routine": "Rotina",
     "finances": "Finanças",
     "profile": "Perfil"
+  },
+  "auth": {
+    "loginTitle": "Entrar",
+    "signupTitle": "Criar conta",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "fullName": "Nome completo",
+    "loginButton": "Entrar",
+    "signupButton": "Criar conta",
+    "goToSignup": "Não tem conta? Criar conta",
+    "goToLogin": "Já tem conta? Entrar",
+    "invalidEmail": "Digite um e-mail válido",
+    "passwordRequired": "Digite sua senha",
+    "passwordTooShort": "A senha precisa ter no mínimo 8 caracteres",
+    "passwordMismatch": "As senhas não coincidem",
+    "nameRequired": "Digite seu nome",
+    "loginFailed": "Não foi possível entrar. Verifique seu e-mail e senha",
+    "signupFailed": "Não foi possível criar sua conta. Tente novamente"
+  },
+  "profile": {
+    "changePhoto": "Trocar foto",
+    "permissionDenied": "Precisamos de acesso às suas fotos para trocar o avatar",
+    "uploadFailed": "Não foi possível enviar a foto",
+    "saved": "Salvo com sucesso",
+    "saveFailed": "Não foi possível salvar",
+    "logout": "Sair"
+  },
+  "settings": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeAuto": "Automático",
+    "currency": "Moeda"
   }
 }
