@@ -45,6 +45,11 @@ export default function HomeScreen() {
           {t('tabs.profile')}
         </Button>
       </Link>
+      <Link href="/tasks" asChild>
+        <Button mode="contained" style={styles.button} testID="go-to-tasks">
+          {t('tabs.tasks')}
+        </Button>
+      </Link>
     </View>
   );
 }
