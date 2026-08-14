@@ -19,7 +19,7 @@ App mobile (iOS + Android) para pessoas com TDAH organizarem tarefas, rotina, fo
 npm install
 ```
 
-2. Criar um projeto em [supabase.com](https://supabase.com), copiar a URL e a chave anônima (Settings → API), e rodar o SQL de `supabase/migrations/0001_profiles.sql` no SQL Editor do projeto.
+2. Criar um projeto em [supabase.com](https://supabase.com), copiar a URL e a chave anônima (Settings → API), e rodar, em ordem, todos os arquivos SQL de `supabase/migrations/` no SQL Editor do projeto.
 
 3. Configurar variáveis de ambiente:
 ```bash
