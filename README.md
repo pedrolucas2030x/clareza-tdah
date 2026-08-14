@@ -19,15 +19,23 @@ App mobile (iOS + Android) para pessoas com TDAH organizarem tarefas, rotina, fo
 npm install
 ```
 
-2. Configurar variáveis de ambiente:
+2. Criar um projeto em [supabase.com](https://supabase.com), copiar a URL e a chave anônima (Settings → API), e rodar o SQL de `supabase/migrations/0001_profiles.sql` no SQL Editor do projeto.
+
+3. Configurar variáveis de ambiente:
 ```bash
 cp .env.example .env
 ```
-Preencha `EXPO_PUBLIC_SUPABASE_URL` e `EXPO_PUBLIC_SUPABASE_ANON_KEY` com suas credenciais do Supabase.
+Preencha `EXPO_PUBLIC_SUPABASE_URL` e `EXPO_PUBLIC_SUPABASE_ANON_KEY` com as credenciais do passo anterior.
 
-3. Rodar o app:
+4. Rodar o app:
 ```bash
 npx expo start
+```
+
+## Testes
+
+```bash
+npm test
 ```
 
 ## Estrutura
