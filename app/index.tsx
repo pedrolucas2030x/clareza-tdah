@@ -1,5 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-paper';
+import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 
@@ -39,6 +40,11 @@ export default function HomeScreen() {
       >
         Trocar tema
       </Button>
+      <Link href="/profile" asChild>
+        <Button mode="outlined" style={styles.button} testID="go-to-profile">
+          {t('tabs.profile')}
+        </Button>
+      </Link>
     </View>
   );
 }
