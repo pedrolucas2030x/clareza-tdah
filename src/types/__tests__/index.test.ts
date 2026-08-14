@@ -17,3 +17,21 @@ describe('type defaults', () => {
     expect(SUPPORTED_LANGUAGES).toEqual(['pt-BR', 'en']);
   });
 });
+
+import type { Profile } from '../index';
+
+describe('Profile shape', () => {
+  it('accepts a full profile object', () => {
+    const profile: Profile = {
+      id: 'user-1',
+      fullName: 'Ana Silva',
+      avatarUrl: null,
+      language: 'pt-BR',
+      theme: 'auto',
+      currency: 'BRL',
+      createdAt: '2026-01-01T00:00:00Z',
+      updatedAt: '2026-01-01T00:00:00Z',
+    };
+    expect(profile.id).toBe('user-1');
+  });
+});
