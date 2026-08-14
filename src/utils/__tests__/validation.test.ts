@@ -1,4 +1,5 @@
 import { isValidEmail, isValidPassword, validateSignup } from '../validation';
+import { isValidDueDate, validateTaskForm } from '../validation';
 
 describe('isValidEmail', () => {
   it('accepts a well-formed email', () => {
@@ -57,5 +58,43 @@ describe('validateSignup', () => {
     const result = validateSignup('Ana Silva', 'ana@example.com', '12345678', '87654321');
     expect(result.valid).toBe(false);
     expect(result.errors.confirmPassword).toBe('mismatch');
+  });
+});
+
+describe('isValidDueDate', () => {
+  it('accepts an empty string (optional field)', () => {
+    expect(isValidDueDate('')).toBe(true);
+  });
+
+  it('accepts a well-formed date', () => {
+    expect(isValidDueDate('2026-12-31')).toBe(true);
+  });
+
+  it('rejects a malformed date string', () => {
+    expect(isValidDueDate('31/12/2026')).toBe(false);
+  });
+
+  it('rejects an invalid calendar date', () => {
+    expect(isValidDueDate('2026-13-40')).toBe(false);
+  });
+});
+
+describe('validateTaskForm', () => {
+  it('is valid with a title and no due date', () => {
+    const result = validateTaskForm('Estudar', '');
+    expect(result.valid).toBe(true);
+    expect(result.errors).toEqual({});
+  });
+
+  it('flags an empty title', () => {
+    const result = validateTaskForm('  ', '');
+    expect(result.valid).toBe(false);
+    expect(result.errors.title).toBe('required');
+  });
+
+  it('flags an invalid due date', () => {
+    const result = validateTaskForm('Estudar', 'not-a-date');
+    expect(result.valid).toBe(false);
+    expect(result.errors.dueDate).toBe('invalid');
   });
 });
