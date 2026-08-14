@@ -42,6 +42,8 @@ export default function TaskFormScreen() {
         await updateTask(existingTask.id, input);
       } else if (user) {
         await createTask(user.id, input);
+      } else {
+        throw new Error('No authenticated user');
       }
       router.back();
     } catch {
