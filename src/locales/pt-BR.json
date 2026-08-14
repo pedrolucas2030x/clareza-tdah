@@ -62,5 +62,28 @@
     "themeDark": "Escuro",
     "themeAuto": "Automático",
     "currency": "Moeda"
+  },
+  "tasks": {
+    "empty": "Nenhuma tarefa por aqui ainda",
+    "emptyHint": "Toque no + para criar sua primeira tarefa",
+    "filterPending": "Pendentes",
+    "filterDone": "Concluídas",
+    "filterArchived": "Arquivadas",
+    "newTask": "Nova tarefa",
+    "editTask": "Editar tarefa",
+    "titleLabel": "Título",
+    "titleRequired": "Digite um título",
+    "descriptionLabel": "Descrição",
+    "dueDateLabel": "Vencimento (opcional)",
+    "dueDatePlaceholder": "AAAA-MM-DD",
+    "dueDateInvalid": "Data inválida, use o formato AAAA-MM-DD",
+    "priorityLabel": "Prioridade",
+    "priorityLow": "Baixa",
+    "priorityMedium": "Média",
+    "priorityHigh": "Alta",
+    "saveFailed": "Não foi possível salvar a tarefa",
+    "loadFailed": "Não foi possível carregar suas tarefas",
+    "complete": "Concluir tarefa",
+    "archive": "Arquivar tarefa"
   }
 }

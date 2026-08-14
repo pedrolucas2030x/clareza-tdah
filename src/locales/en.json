@@ -62,5 +62,28 @@
     "themeDark": "Dark",
     "themeAuto": "Automatic",
     "currency": "Currency"
+  },
+  "tasks": {
+    "empty": "No tasks here yet",
+    "emptyHint": "Tap + to create your first task",
+    "filterPending": "Pending",
+    "filterDone": "Done",
+    "filterArchived": "Archived",
+    "newTask": "New task",
+    "editTask": "Edit task",
+    "titleLabel": "Title",
+    "titleRequired": "Enter a title",
+    "descriptionLabel": "Description",
+    "dueDateLabel": "Due date (optional)",
+    "dueDatePlaceholder": "YYYY-MM-DD",
+    "dueDateInvalid": "Invalid date, use YYYY-MM-DD format",
+    "priorityLabel": "Priority",
+    "priorityLow": "Low",
+    "priorityMedium": "Medium",
+    "priorityHigh": "High",
+    "saveFailed": "Could not save the task",
+    "loadFailed": "Could not load your tasks",
+    "complete": "Complete task",
+    "archive": "Archive task"
   }
 }
