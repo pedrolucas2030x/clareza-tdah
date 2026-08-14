@@ -22,3 +22,26 @@ export interface Profile {
   createdAt: string;
   updatedAt: string;
 }
+
+export type TaskPriority = 1 | 2 | 3;
+export type TaskStatus = 'pending' | 'done' | 'archived';
+
+export interface Task {
+  id: string;
+  userId: string;
+  title: string;
+  description: string | null;
+  dueDate: string | null;
+  priority: TaskPriority;
+  status: TaskStatus;
+  completedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateTaskInput {
+  title: string;
+  description?: string | null;
+  dueDate?: string | null;
+  priority?: TaskPriority;
+}
