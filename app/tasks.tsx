@@ -84,6 +84,7 @@ export default function TasksScreen() {
                   <IconButton
                     icon="archive-outline"
                     onPress={() => archiveTask(item.id)}
+                    accessibilityLabel={t('tasks.archive')}
                     testID={`task-archive-${item.id}`}
                   />
                 ) : null
