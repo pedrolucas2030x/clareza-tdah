@@ -29,6 +29,7 @@ export default function RootLayout() {
           screenOptions={{
             headerStyle: { backgroundColor: paperTheme.colors.primary },
             headerTintColor: '#fff',
+            contentStyle: { backgroundColor: paperTheme.colors.background },
           }}
         />
       </PaperProvider>
