@@ -1,0 +1,31 @@
+{
+  "common": {
+    "appName": "Clareza TDAH",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "confirm": "Confirmar",
+    "loading": "Carregando...",
+    "error": "Algo deu errado",
+    "retry": "Tentar novamente"
+  },
+  "home": {
+    "greetingMorning": "Bom dia",
+    "greetingAfternoon": "Boa tarde",
+    "greetingEvening": "Boa noite",
+    "nextTasks": "Próximas tarefas",
+    "currentRoutine": "Agora na sua rotina",
+    "startFocus": "Iniciar foco",
+    "monthSummary": "Resumo do mês"
+  },
+  "tabs": {
+    "home": "Início",
+    "tasks": "Tarefas",
+    "focus": "Foco",
+    "routine": "Rotina",
+    "finances": "Finanças",
+    "profile": "Perfil"
+  }
+}

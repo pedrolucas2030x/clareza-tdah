@@ -1,0 +1,31 @@
+{
+  "common": {
+    "appName": "Clareza ADHD",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again"
+  },
+  "home": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "nextTasks": "Next tasks",
+    "currentRoutine": "Current routine",
+    "startFocus": "Start focus",
+    "monthSummary": "Monthly summary"
+  },
+  "tabs": {
+    "home": "Home",
+    "tasks": "Tasks",
+    "focus": "Focus",
+    "routine": "Routine",
+    "finances": "Finances",
+    "profile": "Profile"
+  }
+}
