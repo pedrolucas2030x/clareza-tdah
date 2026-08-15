@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, SegmentedButtons, TextInput, Button } from 'react-native-paper';
+import { Text, SegmentedButtons, TextInput, Button, Surface } from 'react-native-paper';
+import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useAuthStore } from '@/stores/useAuthStore';
@@ -40,47 +41,49 @@ export default function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text variant="titleMedium">{t('settings.language')}</Text>
-      <SegmentedButtons
-        value={language}
-        onValueChange={handleLanguageChange}
-        buttons={[
-          { value: 'pt-BR', label: 'Português' },
-          { value: 'en', label: 'English' },
-        ]}
-        style={styles.field}
-      />
-
-      <Text variant="titleMedium">{t('settings.theme')}</Text>
-      <SegmentedButtons
-        value={theme}
-        onValueChange={handleThemeChange}
-        buttons={[
-          { value: 'light', label: t('settings.themeLight') },
-          { value: 'dark', label: t('settings.themeDark') },
-          { value: 'auto', label: t('settings.themeAuto') },
-        ]}
-        style={styles.field}
-      />
-
-      <Text variant="titleMedium">{t('settings.currency')}</Text>
-      <TextInput
-        value={currencyInput}
-        onChangeText={setCurrencyInput}
-        autoCapitalize="characters"
-        maxLength={3}
-        style={styles.field}
-        testID="settings-currency"
-      />
-      <Button mode="contained" onPress={handleCurrencySave} testID="settings-save-currency">
-        {t('common.save')}
-      </Button>
-      {statusMessage ? <Text testID="settings-status">{statusMessage}</Text> : null}
+      <Stack.Screen options={{ title: t('settings.title') }} />
+      <Surface style={styles.section} elevation={1}>
+        <Text variant="titleMedium">{t('settings.language')}</Text>
+        <SegmentedButtons
+          value={language}
+          onValueChange={handleLanguageChange}
+          buttons={[
+            { value: 'pt-BR', label: 'Português' },
+            { value: 'en', label: 'English' },
+          ]}
+          style={styles.field}
+        />
+        <Text variant="titleMedium">{t('settings.theme')}</Text>
+        <SegmentedButtons
+          value={theme}
+          onValueChange={handleThemeChange}
+          buttons={[
+            { value: 'light', label: t('settings.themeLight') },
+            { value: 'dark', label: t('settings.themeDark') },
+            { value: 'auto', label: t('settings.themeAuto') },
+          ]}
+          style={styles.field}
+        />
+        <Text variant="titleMedium">{t('settings.currency')}</Text>
+        <TextInput
+          value={currencyInput}
+          onChangeText={setCurrencyInput}
+          autoCapitalize="characters"
+          maxLength={3}
+          style={styles.field}
+          testID="settings-currency"
+        />
+        <Button mode="contained" onPress={handleCurrencySave} testID="settings-save-currency">
+          {t('common.save')}
+        </Button>
+        {statusMessage ? <Text testID="settings-status">{statusMessage}</Text> : null}
+      </Surface>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 24, gap: 8 },
-  field: { marginBottom: 16 },
+  container: { flex: 1, padding: 16, gap: 8 },
+  section: { borderRadius: 16, padding: 16, gap: 8 },
+  field: { marginBottom: 8 },
 });
