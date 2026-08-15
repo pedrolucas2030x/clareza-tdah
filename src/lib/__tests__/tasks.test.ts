@@ -5,7 +5,7 @@ jest.mock('@/lib/supabase', () => ({
 }));
 
 import { supabase } from '@/lib/supabase';
-import { archiveTask, completeTask, createTask, fetchTasks, updateTask } from '../tasks';
+import { archiveTask, completeTask, createTask, fetchTask, fetchTasks, updateTask } from '../tasks';
 
 const row = {
   id: 'task-1',
@@ -73,6 +73,41 @@ describe('fetchTasks', () => {
     (supabase.from as jest.Mock).mockReturnValue({ select });
 
     await expect(fetchTasks('user-1')).rejects.toThrow('boom');
+  });
+});
+
+describe('fetchTask', () => {
+  it('maps a single row to a task', async () => {
+    const single = jest.fn().mockResolvedValue({ data: row, error: null });
+    const eq = jest.fn().mockReturnValue({ single });
+    const select = jest.fn().mockReturnValue({ eq });
+    (supabase.from as jest.Mock).mockReturnValue({ select });
+
+    const task = await fetchTask('task-1');
+
+    expect(supabase.from).toHaveBeenCalledWith('tasks');
+    expect(eq).toHaveBeenCalledWith('id', 'task-1');
+    expect(task).toEqual({
+      id: 'task-1',
+      userId: 'user-1',
+      title: 'Estudar',
+      description: null,
+      dueDate: null,
+      priority: 2,
+      status: 'pending',
+      completedAt: null,
+      createdAt: '2026-01-01T00:00:00Z',
+      updatedAt: '2026-01-01T00:00:00Z',
+    });
+  });
+
+  it('throws when Supabase returns an error', async () => {
+    const single = jest.fn().mockResolvedValue({ data: null, error: new Error('boom') });
+    const eq = jest.fn().mockReturnValue({ single });
+    const select = jest.fn().mockReturnValue({ eq });
+    (supabase.from as jest.Mock).mockReturnValue({ select });
+
+    await expect(fetchTask('task-1')).rejects.toThrow('boom');
   });
 });
 

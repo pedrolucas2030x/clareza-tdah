@@ -1,19 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, TextInput, Button, SegmentedButtons, HelperText } from 'react-native-paper';
+import {
+  Text,
+  TextInput,
+  Button,
+  SegmentedButtons,
+  HelperText,
+  ActivityIndicator,
+} from 'react-native-paper';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useTaskStore } from '@/stores/useTaskStore';
+import { fetchTask } from '@/lib/tasks';
 import { validateTaskForm } from '@/utils/validation';
-import type { TaskPriority } from '@/types';
+import type { Task, TaskPriority } from '@/types';
 
 export default function TaskFormScreen() {
   const { t } = useTranslation();
   const { id } = useLocalSearchParams<{ id?: string }>();
   const { user } = useAuthStore();
   const { tasks, createTask, updateTask } = useTaskStore();
-  const existingTask = id ? tasks.find((task) => task.id === id) : undefined;
+  const [fetchedTask, setFetchedTask] = useState<Task | null>(null);
+  const [isLoadingTask, setIsLoadingTask] = useState(false);
+  const existingTask = id ? (tasks.find((task) => task.id === id) ?? fetchedTask ?? undefined) : undefined;
 
   const [title, setTitle] = useState(existingTask?.title ?? '');
   const [description, setDescription] = useState(existingTask?.description ?? '');
@@ -21,6 +31,22 @@ export default function TaskFormScreen() {
   const [priority, setPriority] = useState<TaskPriority>(existingTask?.priority ?? 2);
   const [isSaving, setIsSaving] = useState(false);
   const [formError, setFormError] = useState('');
+
+  useEffect(() => {
+    if (id && !tasks.find((task) => task.id === id)) {
+      setIsLoadingTask(true);
+      fetchTask(id)
+        .then((task) => {
+          setFetchedTask(task);
+          setTitle(task.title);
+          setDescription(task.description ?? '');
+          setDueDate(task.dueDate?.slice(0, 10) ?? '');
+          setPriority(task.priority);
+        })
+        .catch(() => setFormError(t('tasks.loadFailed')))
+        .finally(() => setIsLoadingTask(false));
+    }
+  }, [id]);
 
   const handleSubmit = async () => {
     setFormError('');
@@ -52,6 +78,14 @@ export default function TaskFormScreen() {
       setIsSaving(false);
     }
   };
+
+  if (isLoadingTask) {
+    return (
+      <View style={[styles.container, styles.loading]}>
+        <ActivityIndicator testID="task-form-loading" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -114,6 +148,7 @@ export default function TaskFormScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, gap: 4 },
+  loading: { alignItems: 'center', justifyContent: 'center' },
   title: { marginBottom: 16 },
   input: { marginBottom: 4 },
   button: { marginTop: 12 },

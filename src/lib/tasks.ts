@@ -39,6 +39,12 @@ export async function fetchTasks(userId: string, status?: TaskStatus): Promise<T
   return (data as TaskRow[]).map(mapRow);
 }
 
+export async function fetchTask(taskId: string): Promise<Task> {
+  const { data, error } = await supabase.from('tasks').select('*').eq('id', taskId).single();
+  if (error) throw error;
+  return mapRow(data as TaskRow);
+}
+
 export async function createTask(userId: string, input: CreateTaskInput): Promise<Task> {
   const { data, error } = await supabase
     .from('tasks')
