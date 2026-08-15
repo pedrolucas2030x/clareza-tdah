@@ -31,6 +31,14 @@ export const lightTheme: MD3Theme = {
     inverseSurface: '#2f3131',
     inverseOnSurface: '#f0f1f1',
     inversePrimary: '#c0c1ff',
+    elevation: {
+      level0: 'transparent',
+      level1: '#f0f0f7',
+      level2: '#ebebf6',
+      level3: '#e5e6f5',
+      level4: '#e4e4f5',
+      level5: '#e0e0f4',
+    },
   },
 };
 
@@ -42,5 +50,13 @@ export const darkTheme: MD3Theme = {
     secondary: '#a78bfa',
     background: '#0f172a',
     surface: '#1e293b',
+    elevation: {
+      level0: 'transparent',
+      level1: '#232e44',
+      level2: '#26314a',
+      level3: '#293450',
+      level4: '#2a3552',
+      level5: '#2c3755',
+    },
   },
 };
