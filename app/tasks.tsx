@@ -38,6 +38,7 @@ export default function TasksScreen() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
+        style={styles.filterBar}
         contentContainerStyle={styles.filterRow}
       >
         {filters.map((item) => (
@@ -76,6 +77,7 @@ export default function TasksScreen() {
               {item.status === 'pending' ? (
                 <IconButton
                   icon="checkbox-blank-circle-outline"
+                  size={32}
                   onPress={() => completeTask(item.id)}
                   accessibilityLabel={t('tasks.complete')}
                   testID={`task-complete-${item.id}`}
@@ -96,6 +98,7 @@ export default function TasksScreen() {
               {item.status !== 'archived' ? (
                 <IconButton
                   icon="archive-outline"
+                  size={32}
                   onPress={() => archiveTask(item.id)}
                   accessibilityLabel={t('tasks.archive')}
                   testID={`task-archive-${item.id}`}
@@ -118,6 +121,7 @@ export default function TasksScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16 },
+  filterBar: { flexGrow: 0, flexShrink: 0 },
   filterRow: { gap: 8, paddingBottom: 8 },
   chip: { marginRight: 4 },
   loading: { marginTop: 24 },
