@@ -7,8 +7,9 @@ import {
   SegmentedButtons,
   HelperText,
   ActivityIndicator,
+  Surface,
 } from 'react-native-paper';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useTaskStore } from '@/stores/useTaskStore';
@@ -103,34 +104,61 @@ export default function TaskFormScreen() {
 
   return (
     <View style={styles.container}>
-      <Text variant="headlineMedium" style={styles.title}>
-        {existingTask ? t('tasks.editTask') : t('tasks.newTask')}
+      <Stack.Screen
+        options={{
+          title: existingTask ? t('tasks.editTask') : t('tasks.newTask'),
+          headerRight: () => (
+            <Button
+              onPress={handleSubmit}
+              loading={isSaving}
+              disabled={isSaving}
+              textColor="#fff"
+              testID="task-save"
+            >
+              {t('common.save')}
+            </Button>
+          ),
+        }}
+      />
+      <Surface style={styles.field} elevation={1}>
+        <TextInput
+          label={t('tasks.titleLabel')}
+          value={title}
+          onChangeText={setTitle}
+          mode="flat"
+          underlineColor="transparent"
+          testID="task-title"
+        />
+      </Surface>
+      <Surface style={styles.field} elevation={1}>
+        <TextInput
+          label={t('tasks.descriptionLabel')}
+          value={description}
+          onChangeText={setDescription}
+          multiline
+          mode="flat"
+          underlineColor="transparent"
+          left={<TextInput.Icon icon="text-box-outline" />}
+          style={styles.descriptionInput}
+          testID="task-description"
+        />
+      </Surface>
+      <Surface style={styles.field} elevation={1}>
+        <TextInput
+          label={t('tasks.dueDateLabel')}
+          value={dueDate}
+          onChangeText={setDueDate}
+          placeholder={t('tasks.dueDatePlaceholder')}
+          autoCapitalize="none"
+          mode="flat"
+          underlineColor="transparent"
+          left={<TextInput.Icon icon="calendar-blank-outline" />}
+          testID="task-due-date"
+        />
+      </Surface>
+      <Text variant="titleMedium" style={styles.sectionLabel}>
+        {t('tasks.priorityLabel')}
       </Text>
-      <TextInput
-        label={t('tasks.titleLabel')}
-        value={title}
-        onChangeText={setTitle}
-        style={styles.input}
-        testID="task-title"
-      />
-      <TextInput
-        label={t('tasks.descriptionLabel')}
-        value={description}
-        onChangeText={setDescription}
-        multiline
-        style={styles.input}
-        testID="task-description"
-      />
-      <TextInput
-        label={t('tasks.dueDateLabel')}
-        value={dueDate}
-        onChangeText={setDueDate}
-        placeholder={t('tasks.dueDatePlaceholder')}
-        autoCapitalize="none"
-        style={styles.input}
-        testID="task-due-date"
-      />
-      <Text variant="titleMedium">{t('tasks.priorityLabel')}</Text>
       <SegmentedButtons
         value={String(priority)}
         onValueChange={(value) => setPriority(Number(value) as TaskPriority)}
@@ -139,31 +167,21 @@ export default function TaskFormScreen() {
           { value: '2', label: t('tasks.priorityMedium') },
           { value: '3', label: t('tasks.priorityHigh') },
         ]}
-        style={styles.input}
+        style={styles.field}
       />
       {formError ? (
         <HelperText type="error" visible testID="task-form-error">
           {formError}
         </HelperText>
       ) : null}
-      <Button
-        mode="contained"
-        onPress={handleSubmit}
-        loading={isSaving}
-        disabled={isSaving}
-        style={styles.button}
-        testID="task-save"
-      >
-        {t('common.save')}
-      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 24, gap: 4 },
+  container: { flex: 1, padding: 16, gap: 12 },
   loading: { alignItems: 'center', justifyContent: 'center' },
-  title: { marginBottom: 16 },
-  input: { marginBottom: 4 },
-  button: { marginTop: 12 },
+  field: { borderRadius: 12, marginBottom: 4 },
+  descriptionInput: { minHeight: 96 },
+  sectionLabel: { marginTop: 8 },
 });
