@@ -23,6 +23,7 @@ export default function TaskFormScreen() {
   const { tasks, createTask, updateTask } = useTaskStore();
   const [fetchedTask, setFetchedTask] = useState<Task | null>(null);
   const [isLoadingTask, setIsLoadingTask] = useState(false);
+  const [fetchFailed, setFetchFailed] = useState(false);
   const existingTask = id ? (tasks.find((task) => task.id === id) ?? fetchedTask ?? undefined) : undefined;
 
   const [title, setTitle] = useState(existingTask?.title ?? '');
@@ -43,7 +44,10 @@ export default function TaskFormScreen() {
           setDueDate(task.dueDate?.slice(0, 10) ?? '');
           setPriority(task.priority);
         })
-        .catch(() => setFormError(t('tasks.loadFailed')))
+        .catch(() => {
+          setFetchFailed(true);
+          setFormError(t('tasks.loadFailed'));
+        })
         .finally(() => setIsLoadingTask(false));
     }
   }, [id]);
@@ -83,6 +87,16 @@ export default function TaskFormScreen() {
     return (
       <View style={[styles.container, styles.loading]}>
         <ActivityIndicator testID="task-form-loading" />
+      </View>
+    );
+  }
+
+  if (fetchFailed) {
+    return (
+      <View style={[styles.container, styles.loading]}>
+        <HelperText type="error" visible testID="task-form-error">
+          {formError}
+        </HelperText>
       </View>
     );
   }

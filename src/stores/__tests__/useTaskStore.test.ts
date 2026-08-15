@@ -98,6 +98,16 @@ describe('useTaskStore', () => {
     expect(useTaskStore.getState().tasks).toEqual([archived]);
   });
 
+  it('completeTask clears a previous error on success', async () => {
+    useTaskStore.setState({ tasks: [fakeTask], error: 'stale error from an earlier failure' });
+    const doneTask = { ...fakeTask, status: 'done' as const, completedAt: '2026-01-02T00:00:00Z' };
+    (tasksLib.completeTask as jest.Mock).mockResolvedValue(doneTask);
+
+    await useTaskStore.getState().completeTask('task-1');
+
+    expect(useTaskStore.getState().error).toBeNull();
+  });
+
   it('archiveTask stores the error message on failure', async () => {
     useTaskStore.setState({ tasks: [fakeTask] });
     (tasksLib.archiveTask as jest.Mock).mockRejectedValue(new Error('network down'));

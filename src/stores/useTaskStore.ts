@@ -54,7 +54,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   completeTask: async (taskId) => {
     try {
       const task = await completeTaskRequest(taskId);
-      set({ tasks: replaceTask(get().tasks, task) });
+      set({ tasks: replaceTask(get().tasks, task), error: null });
     } catch (e) {
       set({ error: (e as Error).message });
     }
@@ -63,7 +63,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   archiveTask: async (taskId) => {
     try {
       const task = await archiveTaskRequest(taskId);
-      set({ tasks: replaceTask(get().tasks, task) });
+      set({ tasks: replaceTask(get().tasks, task), error: null });
     } catch (e) {
       set({ error: (e as Error).message });
     }
