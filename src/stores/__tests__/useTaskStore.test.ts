@@ -78,6 +78,16 @@ describe('useTaskStore', () => {
     expect(useTaskStore.getState().tasks).toEqual([doneTask]);
   });
 
+  it('completeTask stores the error message on failure', async () => {
+    useTaskStore.setState({ tasks: [fakeTask] });
+    (tasksLib.completeTask as jest.Mock).mockRejectedValue(new Error('network down'));
+
+    await useTaskStore.getState().completeTask('task-1');
+
+    expect(useTaskStore.getState().error).toBe('network down');
+    expect(useTaskStore.getState().tasks).toEqual([fakeTask]);
+  });
+
   it('archiveTask replaces the task with the updated version', async () => {
     useTaskStore.setState({ tasks: [fakeTask] });
     const archived = { ...fakeTask, status: 'archived' as const };
@@ -86,5 +96,15 @@ describe('useTaskStore', () => {
     await useTaskStore.getState().archiveTask('task-1');
 
     expect(useTaskStore.getState().tasks).toEqual([archived]);
+  });
+
+  it('archiveTask stores the error message on failure', async () => {
+    useTaskStore.setState({ tasks: [fakeTask] });
+    (tasksLib.archiveTask as jest.Mock).mockRejectedValue(new Error('network down'));
+
+    await useTaskStore.getState().archiveTask('task-1');
+
+    expect(useTaskStore.getState().error).toBe('network down');
+    expect(useTaskStore.getState().tasks).toEqual([fakeTask]);
   });
 });
