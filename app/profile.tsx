@@ -75,6 +75,7 @@ export default function ProfileScreen() {
   if (!profile) {
     return (
       <View style={styles.center}>
+        <Stack.Screen options={{ title: t('tabs.profile') }} />
         <ActivityIndicator />
       </View>
     );
@@ -92,11 +93,12 @@ export default function ProfileScreen() {
         <IconButton
           icon="pencil"
           mode="contained"
-          size={20}
+          size={32}
           onPress={handlePickImage}
           loading={isUploading}
           disabled={isUploading}
           style={styles.editAvatarButton}
+          accessibilityLabel={t('profile.changePhoto')}
           testID="pick-avatar"
         />
       </View>
