@@ -18,7 +18,9 @@
     "nextTasks": "Next tasks",
     "currentRoutine": "Current routine",
     "startFocus": "Start focus",
-    "monthSummary": "Monthly summary"
+    "monthSummary": "Monthly summary",
+    "nextTasksEmpty": "No tasks scheduled for now.",
+    "routineComingSoon": "Coming soon"
   },
   "tabs": {
     "home": "Home",
@@ -45,7 +47,9 @@
     "passwordMismatch": "Passwords do not match",
     "nameRequired": "Enter your name",
     "loginFailed": "Could not log in. Check your email and password",
-    "signupFailed": "Could not create your account. Please try again"
+    "signupFailed": "Could not create your account. Please try again",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "profile": {
     "changePhoto": "Change photo",
@@ -53,7 +57,8 @@
     "uploadFailed": "Could not upload the photo",
     "saved": "Saved successfully",
     "saveFailed": "Could not save",
-    "logout": "Log out"
+    "logout": "Log out",
+    "tasksCompleted": "Tasks completed"
   },
   "settings": {
     "language": "Language",
@@ -61,7 +66,8 @@
     "themeLight": "Light",
     "themeDark": "Dark",
     "themeAuto": "Automatic",
-    "currency": "Currency"
+    "currency": "Currency",
+    "title": "Settings"
   },
   "tasks": {
     "empty": "No tasks here yet",

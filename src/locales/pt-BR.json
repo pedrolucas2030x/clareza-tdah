@@ -18,7 +18,9 @@
     "nextTasks": "Próximas tarefas",
     "currentRoutine": "Agora na sua rotina",
     "startFocus": "Iniciar foco",
-    "monthSummary": "Resumo do mês"
+    "monthSummary": "Resumo do mês",
+    "nextTasksEmpty": "Nenhuma tarefa agendada para agora.",
+    "routineComingSoon": "Em breve"
   },
   "tabs": {
     "home": "Início",
@@ -45,7 +47,9 @@
     "passwordMismatch": "As senhas não coincidem",
     "nameRequired": "Digite seu nome",
     "loginFailed": "Não foi possível entrar. Verifique seu e-mail e senha",
-    "signupFailed": "Não foi possível criar sua conta. Tente novamente"
+    "signupFailed": "Não foi possível criar sua conta. Tente novamente",
+    "showPassword": "Mostrar senha",
+    "hidePassword": "Ocultar senha"
   },
   "profile": {
     "changePhoto": "Trocar foto",
@@ -53,7 +57,8 @@
     "uploadFailed": "Não foi possível enviar a foto",
     "saved": "Salvo com sucesso",
     "saveFailed": "Não foi possível salvar",
-    "logout": "Sair"
+    "logout": "Sair",
+    "tasksCompleted": "Tarefas concluídas"
   },
   "settings": {
     "language": "Idioma",
@@ -61,7 +66,8 @@
     "themeLight": "Claro",
     "themeDark": "Escuro",
     "themeAuto": "Automático",
-    "currency": "Moeda"
+    "currency": "Moeda",
+    "title": "Configurações"
   },
   "tasks": {
     "empty": "Nenhuma tarefa por aqui ainda",
