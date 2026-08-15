@@ -87,6 +87,7 @@ export default function TaskFormScreen() {
   if (isLoadingTask) {
     return (
       <View style={[styles.container, styles.loading]}>
+        <Stack.Screen options={{ title: existingTask ? t('tasks.editTask') : t('tasks.newTask') }} />
         <ActivityIndicator testID="task-form-loading" />
       </View>
     );
@@ -95,6 +96,7 @@ export default function TaskFormScreen() {
   if (fetchFailed) {
     return (
       <View style={[styles.container, styles.loading]}>
+        <Stack.Screen options={{ title: existingTask ? t('tasks.editTask') : t('tasks.newTask') }} />
         <HelperText type="error" visible testID="task-form-error">
           {formError}
         </HelperText>
